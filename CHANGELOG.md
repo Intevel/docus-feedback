@@ -1,4 +1,17 @@
 
+## v1.1.1
+
+[compare changes](https://undefined/undefined/compare/v1.1.0...v1.1.1)
+
+
+### 🩹 Fixes
+
+  - Missing import (ef2b4f1)
+
+### ❤️  Contributors
+
+- Conner Bachmann ([@Intevel](http://github.com/Intevel))
+
 ## v1.1.0
 
 [compare changes](https://undefined/undefined/compare/v1.0.2...v1.1.0)
