@@ -23,6 +23,12 @@ export interface DocusFeedbackOptions {
   isEnabled?: boolean;
 }
 
+export interface FeedbackBody {
+  feedback: string
+  user_id?: string;
+  route: string;
+}
+
 export default defineNuxtModule<DocusFeedbackOptions>({
   meta: {
     name: "docus-feedback",

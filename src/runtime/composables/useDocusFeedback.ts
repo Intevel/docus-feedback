@@ -1,5 +1,6 @@
-import { useFetch, useRoute } from "#app";
-import { FeedbackBody } from "../server/api/feedback.post";
+import { useRoute } from "#app";
+import { $fetch } from "ohmyfetch";
+import { FeedbackBody } from "../../module";
 
 export function useDocusFeedback() {
   const route = useRoute();
@@ -26,22 +27,18 @@ export function useDocusFeedback() {
         }
       }
     }
-    const { data, pending, error } = await useFetch('/api/feedback', {
+    const res = await $fetch('/api/feedback', {
       method: 'POST',
       body,
-      onResponse({ response }) {
-        // Process the response data
-        return response._data
-      },
-      onResponseError({ response }) {
+      onResponseError() {
         throw createError({
-          statusCode: response.status,
-          message: response.statusText,
+          statusCode: 500,
+          message: "Internal Server Error",
         })
       }
     })
 
-    return { data, pending, error }
+    return res;
   }
 
   return { submitFeedback }

@@ -1,14 +1,9 @@
 import { createError, defineEventHandler, readBody } from 'h3'
 import Database from 'better-sqlite3';
+import { FeedbackBody } from '~~/../src/module';
 
 const db = new Database('feedbacks.db');
 db.exec('CREATE TABLE IF NOT EXISTS feedbacks (id INTEGER PRIMARY KEY AUTOINCREMENT, feedback TEXT, timestamp INTEGER, user_id TEXT DEFAULT NULL, route TEXT)');
-
-export interface FeedbackBody {
-  feedback: string
-  user_id?: string;
-  route: string;
-}
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<FeedbackBody>(event);
