@@ -1,4 +1,4 @@
-import { useRoute } from "#app";
+import { useRoute, useRuntimeConfig } from "#app";
 import { $fetch } from "ohmyfetch";
 import { FeedbackBody } from "../../module";
 
