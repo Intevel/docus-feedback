@@ -7,7 +7,7 @@
 
 Get Feedback on your [Docus](https://docus.dev) based documentation
 
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
+- [✨ Release Notes](/CHANGELOG.md)
 - [🏀 Example](https://codesandbox.io/p/sandbox/docus-feedback-example-8ucvjh?file=%2FREADME.md)
 
 ## Features
