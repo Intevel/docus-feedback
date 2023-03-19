@@ -1,15 +1,19 @@
+// Most of the code for the this middleware is taken from the following repository:
+//  https://github.com/Baroshem/nuxt-security
+
 import { RateLimiter } from "limiter";
 import { defineEventHandler, getRequestHeader, createError } from "h3";
 import cache from "memory-cache";
+import { useRuntimeConfig } from '#imports'
+
+const config = useRuntimeConfig();
 
 const securityConfig = {
   rateLimiter: {
-    throwError: true,
-    value: {
-      tokensPerInterval: 150,
-      interval: "hour",
-      fireImmediately: true,
-    },
+    throwError: config.throwError,
+    tokensPerInterval: config.tokensPerInterval,
+    interval: config.interval,
+    fireImmediately: config.fireImmediately,
   },
 };
 
@@ -19,9 +23,9 @@ export default defineEventHandler(async (event) => {
   if (!cache.get(ip)) {
     // TODO: send rate limiting configuration from the module
     const cachedLimiter = new RateLimiter({
-      tokensPerInterval: 150,
-      interval: "hour",
-      fireImmediately: true,
+      tokensPerInterval: securityConfig.rateLimiter.tokensPerInterval,
+      interval: securityConfig.rateLimiter.interval,
+      fireImmediately: securityConfig.rateLimiter.fireImmediately,
     });
     cache.put(ip, cachedLimiter, 10000);
   } else {

@@ -21,6 +21,26 @@ export interface DocusFeedbackOptions {
    * @description Use this setting to disable the module.
    */
   isEnabled?: boolean;
+  throwError?: boolean;
+  /**
+   * createError in nuxt
+   * @type boolean
+   */
+  tokensPerInterval?: number;
+  /**
+   * jow many requests per interval
+   * @type number
+   */
+  interval?: string;
+  /**
+   * interval in which the tokens are refilled
+   * @type string
+   */
+  fireImmediately?: boolean;
+  /**
+   * if true, the limiter will fire immediately
+   * @type boolean
+   */
 }
 export interface FeedbackBody {
   feedback: string;
@@ -39,7 +59,11 @@ export default defineNuxtModule<DocusFeedbackOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     isEnabled: true,
-    autoUserTracking: true
+    autoUserTracking: true,
+    throwError: false,
+    tokensPerInterval: 150,
+    interval: "hour",
+    fireImmediately: true,
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url);
@@ -60,6 +84,10 @@ export default defineNuxtModule<DocusFeedbackOptions>({
       {
         isEnabled: options.isEnabled,
         autoUserTracking: options.autoUserTracking,
+        throwError: options.throwError,
+        tokensPerInterval: options.tokensPerInterval,
+        interval: options.interval,
+        fireImmediately: options.fireImmediately,
       }
     );
 
