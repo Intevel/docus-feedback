@@ -8,7 +8,7 @@
 Get Feedback on your [Docus](https://docus.dev) based documentation
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-- [🏀 Example](https://stackblitz.com/github/your-org/docus-feedback?file=playground%2Fapp.vue)
+- [🏀 Example](https://codesandbox.io/p/sandbox/docus-feedback-example-8ucvjh?file=%2FREADME.md)
 
 ## Features
 
@@ -17,7 +17,7 @@ Get Feedback on your [Docus](https://docus.dev) based documentation
 - 🗂 TypeScript Support
 
 ## Quick Introduction
-This module is an extension of the documentation theme [Docus](https://docus.dev), this module creates an API endpoint for feedbacks, you then have the possibility to create a component like in the [Example](https://stackblitz.com/github/your-org/docus-feedback?file=playground%2Fapp.vue) and allow the user to provide feedback for the documentation articles via the composable that comes with this module.
+This module is an extension of the documentation theme [Docus](https://docus.dev), this module creates an API endpoint for feedbacks, you then have the possibility to create a component like in the [Example](https://codesandbox.io/p/sandbox/docus-feedback-example-8ucvjh?file=%2FREADME.md) and allow the user to provide feedback for the documentation articles via the composable that comes with this module.
 
 The feedbacks are stored in an SQLite Database and can be checked then.
 
