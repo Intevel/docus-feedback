@@ -1,3 +1,5 @@
+![](https://github.com/Intevel/docus-feedback/blob/master/2023-03-19%2017-48-39.gif)
+
 # docus-feedback
 
 [![npm version][npm-version-src]][npm-version-href]
