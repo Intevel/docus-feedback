@@ -21,26 +21,28 @@ export interface DocusFeedbackOptions {
    * @description Use this setting to disable the module.
    */
   isEnabled?: boolean;
-  throwError?: boolean;
-  /**
-   * createError in nuxt
-   * @type boolean
-   */
-  tokensPerInterval?: number;
-  /**
-   * jow many requests per interval
-   * @type number
-   */
-  interval?: string;
-  /**
-   * interval in which the tokens are refilled
-   * @type string
-   */
-  fireImmediately?: boolean;
-  /**
-   * if true, the limiter will fire immediately
-   * @type boolean
-   */
+  rateLimiter: {
+    throwError?: boolean;
+    /**
+     * createError in nuxt
+     * @type boolean
+     */
+    tokensPerInterval?: number;
+    /**
+     * jow many requests per interval
+     * @type number
+     */
+    interval?: string;
+    /**
+     * interval in which the tokens are refilled
+     * @type string
+     */
+    fireImmediately?: boolean;
+    /**
+     * if true, the limiter will fire immediately
+     * @type boolean
+     */
+  };
 }
 export interface FeedbackBody {
   feedback: string;
@@ -60,10 +62,12 @@ export default defineNuxtModule<DocusFeedbackOptions>({
   defaults: {
     isEnabled: true,
     autoUserTracking: true,
-    throwError: false,
-    tokensPerInterval: 150,
-    interval: "hour",
-    fireImmediately: true,
+    rateLimiter: {
+      throwError: false,
+      tokensPerInterval: 150,
+      interval: "hour",
+      fireImmediately: true,
+    },
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url);
@@ -84,10 +88,12 @@ export default defineNuxtModule<DocusFeedbackOptions>({
       {
         isEnabled: options.isEnabled,
         autoUserTracking: options.autoUserTracking,
-        throwError: options.throwError,
-        tokensPerInterval: options.tokensPerInterval,
-        interval: options.interval,
-        fireImmediately: options.fireImmediately,
+        rateLimiter: {
+          throwError: options.rateLimiter.throwError,
+          tokensPerInterval: options.rateLimiter.tokensPerInterval,
+          interval: options.rateLimiter.interval,
+          fireImmediately: options.rateLimiter.fireImmediately,
+        },
       }
     );
 

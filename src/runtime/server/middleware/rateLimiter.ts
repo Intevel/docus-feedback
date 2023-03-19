@@ -10,10 +10,10 @@ const config = useRuntimeConfig();
 
 const securityConfig = {
   rateLimiter: {
-    throwError: config.throwError,
-    tokensPerInterval: config.tokensPerInterval,
-    interval: config.interval,
-    fireImmediately: config.fireImmediately,
+    throwError: config.rateLimiter.throwError,
+    tokensPerInterval: config.rateLimiter.tokensPerInterval,
+    interval: config.rateLimiter.interval,
+    fireImmediately: config.rateLimiter.fireImmediately,
   },
 };
 
