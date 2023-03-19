@@ -1,4 +1,4 @@
-![](https://github.com/Intevel/docus-feedback/blob/master/2023-03-19%2017-48-39.gif)
+![](https://github.com/Intevel/docus-feedback/blob/master/preview.png?raw=true)
 
 # docus-feedback
 
