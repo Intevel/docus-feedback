@@ -22,9 +22,8 @@ export interface DocusFeedbackOptions {
    */
   isEnabled?: boolean;
 }
-
 export interface FeedbackBody {
-  feedback: string
+  feedback: string;
   user_id?: string;
   route: string;
 }
@@ -47,24 +46,36 @@ export default defineNuxtModule<DocusFeedbackOptions>({
 
     if (!options.isEnabled) {
       // eslint-disable-next-line no-console
-      return console.warn(`[docus-feedback] module is disabled and will not be loaded.`)
+      return console.warn(
+        `[docus-feedback] module is disabled and will not be loaded.`
+      );
     }
 
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
 
     // Nuxt 3
-    nuxt.options.runtimeConfig.public = nuxt.options.runtimeConfig.public || {}
-    nuxt.options.runtimeConfig.public.directus = defu(nuxt.options.runtimeConfig.directus, {
-      isEnabled: options.isEnabled,
-      autoUserTracking: options.autoUserTracking
-    })
+    nuxt.options.runtimeConfig.public = nuxt.options.runtimeConfig.public || {};
+    nuxt.options.runtimeConfig.public.feedback = defu(
+      nuxt.options.runtimeConfig.feedback,
+      {
+        isEnabled: options.isEnabled,
+        autoUserTracking: options.autoUserTracking,
+      }
+    );
 
     if (options.autoUserTracking) {
       // Registers plugin for generating user ids
       addPlugin(resolve(runtimeDir, "./plugin"));
     }
 
-    addImportsDir(resolve(runtimeDir, 'composables'))
+    addImportsDir(resolve(runtimeDir, "composables"));
+
+    // Add rate limit middleware
+    addServerHandler({
+      route: "/api/feedback",
+      middleware: true,
+      handler: resolve(runtimeDir, "server/middleware/rateLimiter"),
+    });
 
     // Add server handler
     addServerHandler({
@@ -75,7 +86,7 @@ export default defineNuxtModule<DocusFeedbackOptions>({
   },
 });
 
-declare module '@nuxt/schema' {
+declare module "@nuxt/schema" {
   interface ConfigSchema {
     publicRuntimeConfig?: {
       feedback?: DocusFeedbackOptions;

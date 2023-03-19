@@ -1,7 +1,5 @@
 import { RateLimiter } from "limiter";
-
 import { defineEventHandler, getRequestHeader, createError } from "h3";
-
 import cache from "memory-cache";
 
 const securityConfig = {
