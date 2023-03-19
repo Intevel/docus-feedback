@@ -3,6 +3,7 @@ import {
   addPlugin,
   createResolver,
   addServerHandler,
+  addImportsDir,
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
 import defu from "defu";
@@ -56,6 +57,8 @@ export default defineNuxtModule<DocusFeedbackOptions>({
       // Registers plugin for generating user ids
       addPlugin(resolve(runtimeDir, "./plugin"));
     }
+
+    addImportsDir(resolve(runtimeDir, 'composables'))
 
     // Add server handler
     addServerHandler({
