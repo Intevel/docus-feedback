@@ -1,4 +1,17 @@
 
+## v1.1.0
+
+[compare changes](https://undefined/undefined/compare/v1.0.2...v1.1.0)
+
+
+### 🚀 Enhancements
+
+  - Fix composable (4b8eb6a)
+
+### ❤️  Contributors
+
+- Conner Bachmann ([@Intevel](http://github.com/Intevel))
+
 ## v1.0.2
 
 [compare changes](https://undefined/undefined/compare/v1.0.1...v1.0.2)
