@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 });
 ```
 
-That's it! You can get feedback on your documentation ✨
+That's it! You are now able to get feedback on your documentation pages ✨
 
 ## Documentation
 
@@ -60,7 +60,35 @@ That's it! You can get feedback on your documentation ✨
 | timestamp | `INTEGER` |
 | user_id   | `TEXT`    |
 
-### Module options
+### Module configuration options
+
+| option                          | description                                                                | example  |
+| ------------------------------- | -------------------------------------------------------------------------- | -------- |
+| `autoUserTracking`              | every submitting user gets a unique id made persistent in the localstorage | `true`   |
+| `isEnabled`                     | enable and disable the module                                              | `true`   |
+| `rateLimiter`                   | rate limit configuration                                                   | -        |
+| `rateLimiter.throwError`        | wheter or not to throw erros if rate limited                               | `false`  |
+| `rateLimiter.tokensPerInterval` | how many requests per interval                                             | 150      |
+| `rateLimiter.interval`          | the interval in which the tokens are being refilled                        | `"hour"` |
+| `rateLimiter.fireImmediately`   | if the limiter should fire immediately                                     | `true`   |
+
+### Module configuration example
+
+```js
+export default defineNuxtConfig({
+  modules: ["docus-feedback"],
+  feedback: {
+    isEnabled: true,
+    autoUserTracking: true,
+    rateLimiter: {
+      throwError: false,
+      tokensPerInterval: 150,
+      interval: "hour",
+      fireImmediately: true,
+    },
+  },
+});
+```
 
 ## Development
 
