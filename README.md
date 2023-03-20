@@ -1,4 +1,4 @@
-![](https://github.com/Intevel/docus-feedback/blob/master/preview.png?raw=true)
+![/](https://github.com/Intevel/docus-feedback/blob/master/preview.png?raw=true)
 
 # docus-feedback
 
@@ -54,27 +54,19 @@ That's it! You can get feedback on your documentation ✨
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Generate type stubs
-npm run dev:prepare
+pnpm run dev:prepare
 
 # Develop with the playground
-npm run dev
-
-# Build the playground
-npm run dev:build
-
-# Run ESLint
-npm run lint
-
-# Run Vitest
-npm run test
-npm run test:watch
-
-# Release new version
-npm run release
+pnpm run dev
 ```
+
+## License
+
+Copyright (c) 2023 Conner Luka Bachmann & Matteo Rezzin
+[MIT License](./LICENSE)
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/docus-feedback/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
