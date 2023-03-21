@@ -22,26 +22,26 @@ export interface DocusFeedbackOptions {
    */
   isEnabled?: boolean;
   rateLimiter: {
+    /**
+     * Will throw an error using createError if limit is reached
+     * @type boolean
+     */
     throwError?: boolean;
     /**
-     * createError in nuxt
-     * @type boolean
+     * How many requests per interval
+     * @type number
      */
     tokensPerInterval?: number;
     /**
-     * jow many requests per interval
-     * @type number
+     * Interval in which the tokens are refilled
+     * @type string
      */
     interval?: string;
     /**
-     * interval in which the tokens are refilled
-     * @type string
-     */
-    fireImmediately?: boolean;
-    /**
-     * if true, the limiter will fire immediately
+     * If true, the limiter will fire immediately
      * @type boolean
      */
+    fireImmediately?: boolean;
   };
 }
 export interface FeedbackBody {
