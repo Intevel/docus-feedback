@@ -62,7 +62,7 @@ That's it! You are now able to get feedback on your documentation pages ✨
 
 ### Module configuration options
 
-| option                          | description                                                                | example  |
+| option                          | description                                                                | default  |
 | ------------------------------- | -------------------------------------------------------------------------- | -------- |
 | `autoUserTracking`              | every submitting user gets a unique id made persistent in the localstorage | `true`   |
 | `isEnabled`                     | enable and disable the module                                              | `true`   |
