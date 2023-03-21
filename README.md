@@ -22,7 +22,7 @@ Get Feedback on your [Docus](https://docus.dev) based documentation
 
 This module is an extension of the documentation theme [Docus](https://docus.dev), this module creates an API endpoint for feedbacks, you then have the possibility to create a component like in the [Example](https://codesandbox.io/p/sandbox/docus-feedback-example-8ucvjh?file=%2FREADME.md) and allow the user to provide feedback for the documentation articles via the composable that comes with this module.
 
-The feedbacks are stored in an SQLite Database and can be checked then.
+The feedbacks are stored in an SQLite Database.
 
 ## Module Options
 
@@ -59,13 +59,54 @@ npm install --save-dev docus-feedback
 
 2. Add `docus-feedback` to the `modules` section of `nuxt.config.ts`
 
-```js
+```ts
 export default defineNuxtConfig({
   modules: ["docus-feedback"],
 });
 ```
 
-That's it! You can get feedback on your documentation ✨
+That's it! You are now able to get feedback on your documentation pages ✨
+
+## Documentation
+
+### Table schema
+
+| field     | datatype  |
+| --------- | --------- |
+| id        | `INTEGER` |
+| feedback  | `TEXT`    |
+| timestamp | `INTEGER` |
+| user_id   | `TEXT`    |
+
+### Module configuration options
+
+| option                          | description                                                                | default  |
+| ------------------------------- | -------------------------------------------------------------------------- | -------- |
+| `autoUserTracking`              | every submitting user gets a unique id made persistent in the localstorage | `true`   |
+| `isEnabled`                     | enable and disable the module                                              | `true`   |
+| `rateLimiter`                   | rate limit configuration                                                   | -        |
+| `rateLimiter.throwError`        | wheter or not to throw erros if rate limited                               | `false`  |
+| `rateLimiter.tokensPerInterval` | how many requests per interval                                             | 150      |
+| `rateLimiter.interval`          | the interval in which the tokens are being refilled                        | `"hour"` |
+| `rateLimiter.fireImmediately`   | if the limiter should fire immediately                                     | `true`   |
+
+### Module configuration example
+
+```ts
+export default defineNuxtConfig({
+  modules: ["docus-feedback"],
+  feedback: {
+    isEnabled: true,
+    autoUserTracking: true,
+    rateLimiter: {
+      throwError: false,
+      tokensPerInterval: 150,
+      interval: "hour",
+      fireImmediately: true,
+    },
+  },
+});
+```
 
 ## Development
 
