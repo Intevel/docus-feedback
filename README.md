@@ -41,7 +41,7 @@ npm install --save-dev docus-feedback
 
 2. Add `docus-feedback` to the `modules` section of `nuxt.config.ts`
 
-```js
+```ts
 export default defineNuxtConfig({
   modules: ["docus-feedback"],
 });
@@ -74,7 +74,7 @@ That's it! You are now able to get feedback on your documentation pages ✨
 
 ### Module configuration example
 
-```js
+```ts
 export default defineNuxtConfig({
   modules: ["docus-feedback"],
   feedback: {
