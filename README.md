@@ -24,22 +24,6 @@ This module is an extension of the documentation theme [Docus](https://docus.dev
 
 The feedbacks are stored in an SQLite Database.
 
-## Module Options
-
-- **autoUserTracking**: boolean  
-  Setting to `true` gives the user an id stored in the local storage
-- **isEnabled**: boolean  
-  Setting to `false` disables the module.
-- **rateLimiter**:
-  - **throwError**: Boolean  
-    Will throw an error using createError if limit is reached
-  - **tokensPerInterval**: String  
-    How many requests per interval
-  - **interval**: String  
-    Interval in which the tokens are refilled
-  - **fireImmediately**: Boolean  
-    If true, the limiter will fire immediately
-
 ## Quick Setup
 
 ⚠️ This module don't support serverless deployment, only Node.JS environment. 
@@ -67,11 +51,9 @@ export default defineNuxtConfig({
 
 That's it! You are now able to get feedback on your documentation pages ✨
 
-## Documentation
-
 ### Table schema
 
-| field     | datatype  |
+| Field     | Datatype  |
 | --------- | --------- |
 | id        | `INTEGER` |
 | feedback  | `TEXT`    |
@@ -80,7 +62,7 @@ That's it! You are now able to get feedback on your documentation pages ✨
 
 ### Module configuration options
 
-| option                          | description                                                                | default  |
+| Option                          | Description                                                                | Default  |
 | ------------------------------- | -------------------------------------------------------------------------- | -------- |
 | `autoUserTracking`              | every submitting user gets a unique id made persistent in the localstorage | `true`   |
 | `isEnabled`                     | enable and disable the module                                              | `true`   |
@@ -104,7 +86,7 @@ export default defineNuxtConfig({
       interval: "hour",
       fireImmediately: true,
     },
-  },
+  }
 });
 ```
 
