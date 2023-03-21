@@ -42,6 +42,8 @@ The feedbacks are stored in an SQLite Database and can be checked then.
 
 ## Quick Setup
 
+⚠️ This module don't support serverless deployment, only Node.JS environment. 
+
 1. Add `docus-feedback` dependency to your project
 
 ```bash
